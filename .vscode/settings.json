@@ -1,0 +1,7 @@
+{
+  "gopls": {
+    "build.buildFlags": ["-tags=webview"]
+  },
+  "go.buildFlags": ["-tags=webview"],
+  "go.testTags": "webview"
+}

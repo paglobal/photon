@@ -1,0 +1,16 @@
+{
+  "name": "photon",
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --emptyOutDir",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^3.0.9"
+  },
+  "dependencies": {
+    "promethium-js": "^0.0.4"
+  }
+}
