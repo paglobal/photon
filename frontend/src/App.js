@@ -6,23 +6,17 @@ const App = () => {
   const input = createRef();
   const output = createRef();
 
-  adaptEffect(() => {
-    ipc.on("open", () => {
-      output.value.innerHTML += "Status: Connected\n";
-
-      ipc.on("message", (payload) => {
-        output.value.innerHTML += "Server: " + payload.x + "\n";
-      });
-    });
+  ipc.on("open", () => {
+    output.value.innerHTML += "Status: Connected\n";
+  });
+  ipc.on("message", (payload) => {
+    output.value.innerHTML += "Server: " + payload.message + "\n";
+    output.value.innerHTML += "Server: " + payload.id + "\n";
   });
 
   const send = () => {
     ipc.emit("message", {
-      mess: input.value.value,
-      arr: [1, 4],
-      val: {
-        two: 2,
-      },
+      message: input.value.value,
     });
     input.value.value = "";
   };

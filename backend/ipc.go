@@ -7,15 +7,7 @@ import (
 	"github.com/gorilla/websocket"
 )
 
-type IPCInterface interface {
-	On(event string, callback Callback) func()
-	Once(event string, callback Callback) func()
-	ReturnEventsMap(t string) EventsMap
-	RegisterEvent(event string, callback Callback, t string) func()
-	Emit(event string, payload Payload)
-}
-
-type Callback func(payload Payload)
+type Callback func(payload Payload, ipc *IPC)
 
 type EventsMap map[string][]Callback
 
@@ -23,6 +15,7 @@ type IPC struct {
 	OnEvents   EventsMap
 	OnceEvents EventsMap
 	Socket     *websocket.Conn
+	ID         string
 }
 
 type Data struct {
@@ -44,12 +37,6 @@ func (ipc *IPC) ReturnEventsMap(t string) EventsMap {
 	} else {
 		return ipc.OnceEvents
 	}
-}
-
-func remove(s []Callback, i int) []Callback {
-	s[i] = s[len(s)-1]
-
-	return s[:len(s)-1]
 }
 
 func (ipc *IPC) RegisterEvent(event string, callback Callback, t string) func() {

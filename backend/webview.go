@@ -17,6 +17,8 @@ func init() {
 		go serve()
 	}
 
+	go start()
+
 	go ipcInit()
 
 	time.Sleep(2 * time.Second)

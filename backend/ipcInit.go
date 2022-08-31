@@ -16,6 +16,16 @@ var upgrader = websocket.Upgrader{
 	},
 }
 
+var onEvents IPCHubEventsMap = make(IPCHubEventsMap)
+var onceEvents IPCHubEventsMap = make(IPCHubEventsMap)
+var ipcs IPCMap = make(IPCMap)
+
+var ipcHub IPCHub = IPCHub{
+	onEvents,
+	onceEvents,
+	ipcs,
+}
+
 func ipcInit() {
 	router := gin.Default()
 
@@ -27,19 +37,20 @@ func ipcInit() {
 				return
 			}
 
-			onEvents := make(map[string][]Callback)
-			onceEvents := make(map[string][]Callback)
+			onEvents := make(EventsMap)
+			onceEvents := make(EventsMap)
 
-			ipcTemp := IPC{
+			ipc := IPC{
 				onEvents,
 				onceEvents,
 				socket,
+				"",
 			}
 
-			var ipc IPCInterface = &ipcTemp
-			start(ipc)
+			ipcHub.AddIPC(&ipc)
 
 			defer socket.Close()
+			defer ipcHub.RemoveIPC(&ipc)
 
 			for {
 				//Read message from browser
@@ -54,11 +65,11 @@ func ipcInit() {
 				onceEvents := ipc.ReturnEventsMap("once")
 
 				for _, v := range onEvents[data.Event] {
-					v(data.Payload)
+					v(data.Payload, &ipc)
 				}
 
 				for _, v := range onceEvents[data.Event] {
-					v(data.Payload)
+					v(data.Payload, &ipc)
 				}
 
 				delete(onceEvents, data.Event)
