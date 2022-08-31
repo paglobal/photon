@@ -22,5 +22,5 @@ func serve() {
 	}
 	router.StaticFS("/", http.FS(static))
 
-	router.Run("127.0.0.1:5173")
+	router.Run(":53172")
 }

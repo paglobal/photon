@@ -1,5 +1,5 @@
 function ipcInit() {
-  const socket = new WebSocket("ws://127.0.0.1:5317/ipc");
+  const socket = new WebSocket("ws://127.0.0.1:53174/ipc");
 
   socket.addEventListener("open", () => {
     socket.addEventListener("message", (e) => {

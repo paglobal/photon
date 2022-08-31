@@ -12,7 +12,7 @@ var upgrader = websocket.Upgrader{
 	ReadBufferSize:  1024,
 	WriteBufferSize: 1024,
 	CheckOrigin: func(r *http.Request) bool {
-		return r.Host == "127.0.0.1:5317"
+		return true
 	},
 }
 
@@ -76,5 +76,5 @@ func ipcInit() {
 			}
 		})
 
-	router.Run("127.0.0.1:5317")
+	router.Run(":53174")
 }

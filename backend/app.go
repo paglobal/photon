@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Payload struct {
 	Message string `json:"message"`
@@ -19,7 +21,7 @@ func start() {
 		ipc := ipcHub.GetIPC(ipcID)
 		payload.ID = ipc.ID
 		ipc.Emit("message", payload)
-		ipc.On("message", guy)
+		ipc.On("message", printMessage)
 	})
 
 	ipcHub.On("remove", func(ipcID string) {
@@ -27,7 +29,7 @@ func start() {
 	})
 }
 
-func guy(p Payload, ipc *IPC) {
+func printMessage(p Payload, ipc *IPC) {
 	payload := Payload{
 		"How you doing?",
 		ipc.ID,
