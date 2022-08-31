@@ -11,5 +11,7 @@ func main() {
 		go serve()
 	}
 
+	go start()
+
 	ipcInit()
 }
