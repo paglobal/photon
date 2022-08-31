@@ -5,4 +5,9 @@ export default defineConfig({
   build: {
     outDir: "../backend/dist/static",
   },
+  server: {
+    host: true,
+    port: 53172,
+    open: true,
+  },
 });
