@@ -1,6 +1,6 @@
-import { html, ref, createRef, adaptEffect } from "promethium-js";
+import { html, ref, createRef } from "promethium-js";
 import "./app.css";
-import ipc from "../ipc";
+import { ipc } from "photon-lib-js";
 
 const App = () => {
   const input = createRef();

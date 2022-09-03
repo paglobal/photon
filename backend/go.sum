@@ -47,6 +47,10 @@ github.com/pelletier/go-toml/v2 v2.0.1/go.mod h1:r9LEWfGN8R5k0VXJ+0BkIe7MYkRdwZO
 github.com/pkg/diff v0.0.0-20210226163009-20ebb0f2a09e/go.mod h1:pJLUxLENpZxwdsKMEsNbx1VGcRFpLqf3715MtcvvzbA=
 github.com/pmezard/go-difflib v1.0.0 h1:4DBwDE0NGyQoBHbLQYPwSUPoCMWR5BEzIk/f1lZbAQM=
 github.com/pmezard/go-difflib v1.0.0/go.mod h1:iKH77koFhYxTK1pcRnkKkqfTogsbg7gZNVY4sRDYZ/4=
+github.com/promethiumjs/photon-lib-go/photon v0.0.0-20220903165053-b84e29729c1e h1:ndyF9RnTL39VporkSLGQEagVQ8jLYYiNwhC+pbOR0JU=
+github.com/promethiumjs/photon-lib-go/photon v0.0.0-20220903165053-b84e29729c1e/go.mod h1:wQP+vhz7Tp7vCL7e5/BCcuWhaKJ+O9zSTA7vV+xtHIY=
+github.com/promethiumjs/photon-lib-go/photon v0.0.0-20220903170709-1c3e24bc136c h1:s7ITveWBKynXd0f7ElEkMabYTD6YwQn0/ZjI/Pe5epk=
+github.com/promethiumjs/photon-lib-go/photon v0.0.0-20220903170709-1c3e24bc136c/go.mod h1:wQP+vhz7Tp7vCL7e5/BCcuWhaKJ+O9zSTA7vV+xtHIY=
 github.com/rogpeppe/go-internal v1.6.1/go.mod h1:xXDCJY+GAPziupqXw64V24skbSoqbTEfhy4qGm1nDQc=
 github.com/rogpeppe/go-internal v1.8.0 h1:FCbCCtXNOY3UtUuHUYaghJg4y7Fd14rXifAYUAtL9R8=
 github.com/rogpeppe/go-internal v1.8.0/go.mod h1:WmiCO8CzOY8rg0OYDC4/i/2WRWAB6poM+XZ2dLUbcbE=
