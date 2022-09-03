@@ -1,17 +1,16 @@
 package main
 
 import (
-	"os"
+	"embed"
+
+	"github.com/promethiumjs/photon-lib-go/photon"
 )
 
+//go:embed dist/static/*
+var content embed.FS
+
 func main() {
-	//serve files only when not in dev mode
-	args := os.Args[1:]
-	if argsCount := len(args); argsCount <= 0 {
-		go serve()
-	}
+	photon.Initialize(content, "dist/static", start)
 
-	go start()
-
-	ipcInit()
+	photon.IPCInit()
 }

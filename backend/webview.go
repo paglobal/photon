@@ -4,22 +4,16 @@
 package main
 
 import (
-	"os"
 	"time"
 
+	"github.com/promethiumjs/photon-lib-go/photon"
 	"github.com/webview/webview"
 )
 
 func init() {
-	//serve files only when not in dev mode
-	args := os.Args[1:]
-	if argsCount := len(args); argsCount <= 0 {
-		go serve()
-	}
+	photon.Initialize(content, "dist/static", start)
 
-	go start()
-
-	go ipcInit()
+	go photon.IPCInit()
 
 	time.Sleep(2 * time.Second)
 	launchUI()
@@ -31,6 +25,6 @@ func launchUI() {
 	defer w.Destroy()
 	w.SetTitle("Hello Photon")
 	w.SetSize(480, 320, webview.HintNone)
-	w.Navigate("http://127.0.0.1:5173/")
+	w.Navigate("http://127.0.0.1:53172/")
 	w.Run()
 }
