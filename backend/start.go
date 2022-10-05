@@ -8,27 +8,34 @@ import (
 
 func start() {
 	//your app code goes here
-	payload := make(photon.Payload)
+	payload := make(map[string]interface{})
 	payload["message"] = "How you doing?"
 
-	photon.IPCHubInstance.On("add", func(ipcID string) {
+	photon.IPCHub.On("add", func(ipcID string) {
 		fmt.Println("New")
-		ipc := photon.IPCHubInstance.GetIPC(ipcID)
+		ipc := photon.IPCHub.GetIPC(ipcID)
 		payload["id"] = ipc.ID
 		ipc.Emit("message", payload)
 		ipc.On("message", printMessage)
 	})
 
-	photon.IPCHubInstance.On("remove", func(ipcID string) {
+	photon.IPCHub.On("remove", func(ipcID string) {
 		fmt.Println(ipcID)
 	})
 }
 
-func printMessage(p photon.Payload, ipc *photon.IPC) {
-	payload := make(photon.Payload)
+type MessageInfo struct {
+	Message string `json:"message"`
+}
+
+func printMessage(p photon.Payload, e string, ipc *photon.IPC) {
+	payload := make(map[string]interface{})
 	payload["message"] = "How you doing?"
 	payload["id"] = ipc.ID
 
 	ipc.Emit("message", payload)
-	fmt.Println(p["message"])
+	messageInfo := MessageInfo{}
+	photon.ToStruct(p, &messageInfo)
+	fmt.Println(p)
+	fmt.Println(messageInfo)
 }

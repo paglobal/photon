@@ -4,23 +4,18 @@
 package main
 
 import (
-	"time"
-
 	"github.com/promethiumjs/photon-lib-go/photon"
 	"github.com/webview/webview"
 )
 
 func init() {
-	photon.Initialize(content, "dist/static", start)
-
-	go photon.IPCInit()
-
-	time.Sleep(2 * time.Second)
-	launchUI()
+	photon.Initialize(content, "dist/static", start, fileServerPort, ipcPort)
+	go launchWebviewUI()
+	photon.IPCInit(ipcPort)
 }
 
-//launch webview to display frontend UI
-func launchUI() {
+func launchWebviewUI() {
+	photon.ListenForConnection(fileServerPort)
 	w := webview.New(false)
 	defer w.Destroy()
 	w.SetTitle("Hello Photon")

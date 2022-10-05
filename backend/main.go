@@ -1,16 +1,16 @@
 package main
 
 import (
-	"embed"
-
 	"github.com/promethiumjs/photon-lib-go/photon"
 )
 
-//go:embed dist/static/*
-var content embed.FS
-
 func main() {
-	photon.Initialize(content, "dist/static", start)
+	photon.Initialize(content, "dist/static", start, fileServerPort, ipcPort)
+	go launchBrowserUI()
+	photon.IPCInit(ipcPort)
+}
 
-	photon.IPCInit()
+func launchBrowserUI() {
+	photon.ListenForConnection(fileServerPort)
+	photon.OpenInBrowser("http://localhost" + fileServerPort)
 }
