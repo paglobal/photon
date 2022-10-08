@@ -3,7 +3,7 @@ module photon
 go 1.18
 
 require (
-	github.com/promethiumjs/photon-lib-go v0.0.5
+	github.com/promethiumjs/photon-lib-go v0.0.6
 	github.com/webview/webview v0.0.0-20220816141928-2ee04ccd0530
 )
 

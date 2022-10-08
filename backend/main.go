@@ -12,5 +12,5 @@ func main() {
 
 func launchBrowserUI() {
 	photon.ListenForConnection(fileServerPort)
-	photon.OpenInBrowser("http://localhost" + fileServerPort)
+	// photon.OpenInBrowser("http://localhost" + fileServerPort)
 }

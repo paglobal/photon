@@ -1,10 +1,12 @@
 import { html, ref, createRef } from "promethium-js";
 import "./app.css";
-import { ipc } from "photon-lib-js";
+import { ipcInit } from "photon-lib-js";
 
 const App = () => {
   const input = createRef();
   const output = createRef();
+
+  const ipc = ipcInit("53174");
 
   ipc.on("open", () => {
     output.value.innerHTML += "Status: Connected\n";
