@@ -4,12 +4,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon -e go --signal SIGTERM --exec \"go build -o dist/bin/app && ./dist/bin/app dev\"",
+    "dev": "nodemon -e go --signal SIGTERM --exec \"go run . -- dev\"",
     "build": "go build -o dist/bin/app",
     "start": "./dist/bin/app",
-    "dev-webview": "nodemon -e go --signal SIGTERM --exec \"go build -o dist/bin/app-webview -tags=webview && ./dist/bin/app-webview dev\"",
+    "dev-webview": "nodemon -e go --signal SIGTERM --exec \"go run -tags=webview . -- dev\"",
     "build-webview": "go build -o dist/bin/app-webview -tags=webview",
-    "start-webview": "./dist/bin/app-webview"
+    "start-webview": "./dist/bin/app-webview",
+    "backend-init": "npm install && go mod tidy && mkdir dist && mkdir dist/bin && mkdir dist/static && touch dist/static/index.html"
   },
   "devDependencies": {
     "nodemon": "^2.0.19"

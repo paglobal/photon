@@ -10,7 +10,7 @@
     "dev-webview": "concurrently \"cd frontend && npm run dev\" \"cd backend && npm run dev-webview\"",
     "build-webview": "cd frontend && npm run build && cd ../backend && npm run build-webview",
     "start-webview": "cd backend && npm run start-webview",
-    "install-all": "npm install && cd frontend && npm install && cd ../backend && npm install && go mod tidy"
+    "photon-init": "npm install && cd frontend && npm run frontend-init && cd ../backend && npm run backend-init"
   },
   "devDependencies": {
     "concurrently": "^7.3.0"

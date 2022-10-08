@@ -4,13 +4,14 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --emptyOutDir"
+    "build": "vite build --emptyOutDir",
+    "frontend-init": "npm install"
   },
   "devDependencies": {
     "vite": "^3.0.9"
   },
   "dependencies": {
-    "photon-lib-js": "^0.0.0",
+    "photon-lib-js": "^0.0.2",
     "promethium-js": "^0.0.4"
   }
 }
